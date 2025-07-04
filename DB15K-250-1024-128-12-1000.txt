@@ -1,0 +1,42 @@
+Namespace(dataset='DB15K', batch_size=1024, margin=12.0, dim=250, epoch=1000, save='./checkpoint/DB15K-1024-250-128-12-2e-5-1000', img_dim=4096, neg_num=128, learning_rate=2e-05, lrg=0.0001, adv_temp=2.0, visual='random', seed=42, missing_rate=0.8, postfix='', con_temp=0, lamda=0, mu=0.0, adv_num=1)
+AdvMixRotatE(
+  (ent_embeddings): Embedding(12842, 500)
+  (rel_embeddings): Embedding(279, 250)
+  (img_proj): Linear(in_features=4096, out_features=500, bias=True)
+  (img_embeddings): Embedding(12842, 4096)
+  (text_proj): Linear(in_features=768, out_features=500, bias=True)
+  (text_embeddings): Embedding(12842, 768)
+  (ent_attn): Linear(in_features=500, out_features=1, bias=False)
+)
+Learning Rate of D: 2e-05
+Learning Rate of G: 0.0001
+Finish initializing...
+  0%|          | 0/1000 [00:00<?, ?it/s]  0%|          | 0/1000 [01:24<?, ?it/s]
+Input Files Path : ./benchmarks/DB15K/
+The toolkit is importing datasets.
+The total of relations is 279.
+The total of entities is 12842.
+The total of train triples is 79222.
+Input Files Path : ./benchmarks/DB15K/
+The total of test triples is 9902.
+The total of valid triples is 9904.
+Traceback (most recent call last):
+  File "/opt/workspace/AdaMF-MAT/run_adamf_mat.py", line 71, in <module>
+    trainer.run()
+  File "/opt/workspace/AdaMF-MAT/mmkgc/config/AdvMixTrainer.py", line 158, in run
+    loss, loss_g = self.train_one_step(data)
+  File "/opt/workspace/AdaMF-MAT/mmkgc/config/AdvMixTrainer.py", line 63, in train_one_step
+    loss, p_score = self.model({
+  File "/home/zry/.conda/envs/ADAMF/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/opt/workspace/AdaMF-MAT/mmkgc/module/strategy/NegativeSampling.py", line 26, in forward
+    score = self.model(data)
+  File "/home/zry/.conda/envs/ADAMF/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/opt/workspace/AdaMF-MAT/mmkgc/module/model/AdvMixRotatE.py", line 121, in forward
+    t_joint = self.get_joint_embeddings(t, t_img_emb, t_text_emb)
+  File "/opt/workspace/AdaMF-MAT/mmkgc/module/model/AdvMixRotatE.py", line 62, in get_joint_embeddings
+    u = torch.tanh(e)
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
