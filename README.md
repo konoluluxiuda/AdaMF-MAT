@@ -1,3 +1,4 @@
+git lfs install
 # Unleashing the Power of Imbalanced Modality Information for Multi-modal Knowledge Graph Completion
 
 ![](https://img.shields.io/badge/version-1.0.1-blue)
